@@ -1,5 +1,6 @@
 # PRACTICA_TPA
 ![CI](https://github.com/mduartel1/PRACTICA_TPA/actions/workflows/ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/mduartel1/PRACTICA_TPA/branch/main/graph/badge.svg)](https://codecov.io/gh/mduartel1/PRACTICA_TPA)
 
 # Gestor CLI de Tareas, Presupuestos e Inventario
 
