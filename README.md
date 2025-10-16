@@ -11,10 +11,10 @@ Incluye CLI, persistencia JSON, pruebas unitarias y CI automatizada con GitHub A
 
 La documentacion se genera con [pdoc](hhtps://pdoc.dev):
 
-## Arquitectura(PRCA2)
+## Arquitectura (PRAC2)
 
-### Diagrama
-
+### Diagrama de clases
+```mermaid
 classDiagram
     direction LR
 
@@ -58,7 +58,10 @@ classDiagram
     GestorTareas --> Persistencia : usa
     CLI --> GestorTareas : invoca
     Main --> CLI : arranca menú
+```
 
+### Diagrama de paquetes
+```mermaid
 graph LR
   A[src/] --> B[models/]
   A[src/] --> C[services/]
@@ -69,7 +72,10 @@ graph LR
   B --> B1[tarea.py]
   C --> C1[gestor_tareas.py]
   D --> D1[persistencia.py]
+```
 
+### Flujo: agregar tarea
+```mermaid
 sequenceDiagram
     participant U as Usuario
     participant CLI as CLI.menu_tareas()
@@ -85,4 +91,4 @@ sequenceDiagram
     S->>P: guardar_tareas(tareas+1)
     S-->>CLI: Tarea creada (id)
     CLI-->>U: "Creada tarea [id]"
-
+```
