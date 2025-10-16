@@ -6,8 +6,5 @@
 Proyecto desarrollado para la asignatura **Técnicas de Programación Avanzada**.
 Incluye CLI, persistencia JSON, pruebas unitarias y CI automatizada con GitHub Actions.
 
-##Documentacion Automatica
+#Documentacion Automatica
 La documentacion se genera con [pdoc](hhtps://pdoc.dev):
-
-´´´bash
-pdoc -o docs src
