@@ -1,16 +1,26 @@
 name: CI
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    # 👇 Asegura que pytest encuentre src/
     env:
       PYTHONPATH: ${{ github.workspace }}
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Instalar dependencias
         run: |
           python -m venv .venv
@@ -18,9 +28,20 @@ jobs:
           pip install -U pip
           pip install -r requirements.txt
           pip install black ruff pytest pytest-cov pdoc
+
       - name: Revisar formato (Black)
         run: .venv/bin/black --check src tests
+
       - name: Revisar estilo (Ruff)
         run: .venv/bin/ruff check src tests
+
       - name: Ejecutar tests con cobertura
-        run: .venv/bin/pytest --cov=src --cov-report=term-missing
+        run: |
+          .venv/bin/pytest --cov=src --cov-report=term-missing --cov-report=xml
+
+      # 👇 Este paso envía el reporte a Codecov
+      - name: Subir reporte de cobertura a Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
