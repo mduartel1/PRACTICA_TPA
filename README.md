@@ -15,7 +15,6 @@ La documentacion se genera con [pdoc](hhtps://pdoc.dev):
 
 ### Diagrama
 
-```mermaid
 classDiagram
     direction LR
 
@@ -60,10 +59,6 @@ classDiagram
     CLI --> GestorTareas : invoca
     Main --> CLI : arranca menú
 
-
-```markdown
-#### Diagrama de paquetes (módulos)
-```mermaid
 graph LR
   A[src/] --> B[models/]
   A[src/] --> C[services/]
@@ -75,9 +70,6 @@ graph LR
   C --> C1[gestor_tareas.py]
   D --> D1[persistencia.py]
 
-  ```markdown
-### Flujo: agregar tarea
-```mermaid
 sequenceDiagram
     participant U as Usuario
     participant CLI as CLI.menu_tareas()
@@ -93,3 +85,4 @@ sequenceDiagram
     S->>P: guardar_tareas(tareas+1)
     S-->>CLI: Tarea creada (id)
     CLI-->>U: "Creada tarea [id]"
+
