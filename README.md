@@ -60,6 +60,10 @@ classDiagram
     Main --> CLI : arranca menú
 ```
 
+**Explicación:**  
+El diagrama de clases muestra la estructura lógica del módulo de Tareas.  
+Define las relaciones entre las clases `Tarea`, `GestorTareas`, `Persistencia`, `CLI` y `Main`, destacando cómo `GestorTareas` coordina las operaciones de creación y persistencia de datos.
+
 ### Diagrama de paquetes
 ```mermaid
 graph LR
@@ -73,6 +77,10 @@ graph LR
   C --> C1[gestor_tareas.py]
   D --> D1[persistencia.py]
 ```
+
+**Explicación:**  
+Este diagrama representa la organización modular del proyecto.  
+Cada carpeta contiene responsabilidades bien definidas: `models` para las entidades, `services` para la lógica de negocio, y `storage` para la persistencia, mientras que `cli.py` y `main.py` gestionan la interfaz de usuario y la ejecución principal.
 
 ### Flujo: agregar tarea
 ```mermaid
@@ -92,3 +100,7 @@ sequenceDiagram
     S-->>CLI: Tarea creada (id)
     CLI-->>U: "Creada tarea [id]"
 ```
+
+**Explicación:**  
+El diagrama de secuencia describe el flujo de interacción cuando un usuario agrega una tarea.  
+Muestra cómo las llamadas entre `CLI`, `GestorTareas`, `Persistencia` y `Tarea` cooperan para almacenar la información y devolver una confirmación al usuario.
