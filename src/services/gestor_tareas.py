@@ -9,7 +9,8 @@ def listar_tareas():
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(
-            "SELECT id, titulo, descripcion, prioridad, completada FROM tareas ORDER BY id;"
+            "SELECT id, titulo, descripcion, prioridad, completada "
+            "FROM tareas ORDER BY id;"
         )
         filas = cur.fetchall()
         conn.close()
@@ -19,7 +20,6 @@ def listar_tareas():
             for (id_, titulo, desc, prio, comp) in filas
         ]
         logger.info(f"Se listaron {len(tareas)} tareas.")
-
         return tareas
 
     except Exception as e:
@@ -33,8 +33,9 @@ def agregar_tarea(titulo, descripcion, prioridad="media"):
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO tareas (titulo, descripcion, prioridad, completada) VALUES (?,?,?,0);",
-            (titulo, descripcion, prioridad),
+            "INSERT INTO tareas (titulo, descripcion, prioridad, completada) "
+            "VALUES (?, ?, ?, 0);",
+            (titulo, descripcion, prioridad),  # ✅ Se pasan los 3 valores
         )
         conn.commit()
         new_id = cur.lastrowid
@@ -61,9 +62,7 @@ def marcar_completada(id_tarea):
         if ok:
             logger.info(f"Tarea marcada como completada (id={id_tarea})")
         else:
-            logger.warning(
-                f"Tarea no encontrada para marcar como completada (id={id_tarea})"
-            )
+            logger.warning(f"Tarea no encontrada (id={id_tarea})")
 
         return ok
 
@@ -85,7 +84,7 @@ def eliminar_tarea(id_tarea):
         if ok:
             logger.info(f"Tarea eliminada (id={id_tarea})")
         else:
-            logger.warning(f"Tarea no encontrada para eliminar (id={id_tarea})")
+            logger.warning(f"Tarea no encontrada (id={id_tarea})")
 
         return ok
 
