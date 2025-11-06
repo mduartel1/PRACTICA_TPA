@@ -5,7 +5,45 @@
 # Gestor CLI de Tareas, Presupuestos e Inventario
 
 Proyecto desarrollado para la asignatura **Técnicas de Programación Avanzada**.
-Incluye CLI, persistencia JSON, pruebas unitarias y CI automatizada con GitHub Actions.
+Incluye CLI, persistencia con **SQLite**, pruebas unitarias, **logging**, documentación automática y CI con GitHub Actions.
+
+---
+
+## 🧩 Funcionalidades principales
+
+### 🔹 Tareas
+- Agregar, listar, marcar como completada y eliminar tareas.
+- Persistencia en base de datos SQLite (`data/gestor.db`).
+
+### 🔹 Presupuestos
+- Registro de **ingresos y gastos** con concepto, monto y tipo.
+- Tabla propia en SQLite (`presupuestos`).
+- Reporte desde CLI.
+
+---
+
+## Instalacion y Ejecucion
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/mduartel1/PRACTICA_TPA.git
+cd PRACTICA_TPA
+
+# 2. Crear entorno virtual
+python3 -m venv .venv
+source .venv/bin/activate  # macOS
+# .venv\Scripts\activate    # Windows 
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Inicializar base de datos
+python -c "from src.storage.database import init_db; init_db()"
+
+# 5. Ejecutar la aplicación
+python -m src.main
+```
+
 
 ## Documentacion Automatica
 
@@ -104,3 +142,34 @@ sequenceDiagram
 **Explicación:**  
 El diagrama de secuencia describe el flujo de interacción cuando un usuario agrega una tarea.  
 Muestra cómo las llamadas entre `CLI`, `GestorTareas`, `Persistencia` y `Tarea` cooperan para almacenar la información y devolver una confirmación al usuario.
+
+## Arquitectura (PRAC3)
+```classDiagram
+    direction LR
+    class Tarea {
+      +int id
+      +str titulo
+      +str descripcion
+      +str prioridad
+      +bool completada
+      +marcar_completada()
+    }
+    class GestorTareas {
+      +listar_tareas()
+      +agregar_tarea()
+      +marcar_completada()
+      +eliminar_tarea()
+    }
+    class GestorPresupuestos {
+      +listar_presupuestos()
+      +agregar_presupuesto()
+      +eliminar_presupuesto()
+    }
+    class Persistencia {
+      +init_db()
+      +get_conn()
+    }
+    GestorTareas --> Tarea
+    GestorTareas --> Persistencia
+    GestorPresupuestos --> Persistencia
+    ```
