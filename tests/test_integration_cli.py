@@ -26,11 +26,11 @@ def test_flujo_completo_cli_agregar_y_listar(monkeypatch, capsys):
     # 3) opción "Salir"
     inputs = iter(
         [
-            "1",                 # menú: agregar tarea
-            "Tarea PRAC4",       # título
-            "Desc PRAC4",        # descripción
-            "alta",              # prioridad
-            "5",                 # menú: salir
+            "1",  # menú: agregar tarea
+            "Tarea PRAC4",  # título
+            "Desc PRAC4",  # descripción
+            "alta",  # prioridad
+            "5",  # menú: salir
         ]
     )
 
