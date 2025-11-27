@@ -13,21 +13,20 @@ def limpiar_tabla_tareas():
 def test_flujo_completo_cli_agregar_y_listar(monkeypatch, capsys):
     """
     Test de integración:
-    - Simula un usuario que entra al menú,
-      agrega una tarea y luego sale.
-    - Verifica que la tarea quedó almacenada.
+    - Simula el menú CLI.
+    - Agrega una tarea.
+    - Comprueba su existencia en SQLite.
     """
     init_db()
     limpiar_tabla_tareas()
 
-    # Secuencia de inputs simulados
     inputs = iter(
         [
-            "1",               # menú: agregar tarea
-            "Tarea PRAC4",     # título
-            "Desc PRAC4",      # descripción
-            "alta",            # prioridad
-            "5",               # menú: salir
+            "1",  # agregar tarea
+            "Tarea PRAC4",
+            "Desc PRAC4",
+            "alta",
+            "5",  # salir
         ]
     )
 
@@ -35,7 +34,7 @@ def test_flujo_completo_cli_agregar_y_listar(monkeypatch, capsys):
 
     from src.cli import menu_tareas
 
-    menu_tareas()  # corre CLI
+    menu_tareas()
 
     tareas = gestor_tareas.listar_tareas()
     titulos = [t.titulo for t in tareas]
