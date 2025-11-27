@@ -15,22 +15,19 @@ def test_flujo_completo_cli_agregar_y_listar(monkeypatch, capsys):
     Test de integración:
     - Simula un usuario que entra al menú,
       agrega una tarea y luego sale.
-    - Verifica que la tarea quedó almacenada en la base de datos.
+    - Verifica que la tarea quedó almacenada.
     """
     init_db()
     limpiar_tabla_tareas()
 
-    # Secuencia de inputs simulados para el menú:
-    # 1) opción "Agregar tarea"
-    # 2) título, descripción, prioridad
-    # 3) opción "Salir"
+    # Secuencia de inputs simulados
     inputs = iter(
         [
-            "1",  # menú: agregar tarea
-            "Tarea PRAC4",  # título
-            "Desc PRAC4",  # descripción
-            "alta",  # prioridad
-            "5",  # menú: salir
+            "1",               # menú: agregar tarea
+            "Tarea PRAC4",     # título
+            "Desc PRAC4",      # descripción
+            "alta",            # prioridad
+            "5",               # menú: salir
         ]
     )
 
@@ -38,7 +35,7 @@ def test_flujo_completo_cli_agregar_y_listar(monkeypatch, capsys):
 
     from src.cli import menu_tareas
 
-    menu_tareas()  # si no lanza excepción, la CLI ha funcionado
+    menu_tareas()  # corre CLI
 
     tareas = gestor_tareas.listar_tareas()
     titulos = [t.titulo for t in tareas]

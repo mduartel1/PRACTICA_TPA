@@ -11,7 +11,6 @@ def limpiar_tabla_presupuestos():
 
 
 def setup_function(_):
-    # DB inicializada por conftest; aquí solo limpiamos la tabla
     init_db()
     gp.crear_tabla()
     limpiar_tabla_presupuestos()
@@ -34,8 +33,7 @@ def test_eliminar_presupuesto():
     gp.agregar_presupuesto("Alquiler", 800, "gasto")
 
     datos = gp.listar_presupuestos()
-    ids = [fila[0] for fila in datos]
-    primer_id = ids[0]
+    primer_id = datos[0][0]
 
     ok = gp.eliminar_presupuesto(primer_id)
     assert ok is True
