@@ -1,15 +1,62 @@
-# PRACTICA_TPA
+# PRACTICA_TPA – Gestor CLI de Tareas, Presupuestos e Inventario
+
 ![CI](https://github.com/mduartel1/PRACTICA_TPA/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/mduartel1/PRACTICA_TPA/branch/main/graph/badge.svg)](https://codecov.io/gh/mduartel1/PRACTICA_TPA)
 
-# Gestor CLI de Tareas, Presupuestos e Inventario
+Proyecto desarrollado para la asignatura **Técnicas de Programación Avanzada**.  
+Incluye un **CLI completo**, persistencia en **SQLite**, logging avanzado, pruebas unitarias e integración, CI automatizado con GitHub Actions y documentación generada automáticamente.
 
-Proyecto desarrollado para la asignatura **Técnicas de Programación Avanzada**.
-Incluye CLI, persistencia con **SQLite**, pruebas unitarias, **logging**, documentación automática y CI con GitHub Actions.
+---
+# 🧭 Índice
+
+1. [Descripción general](#descripción-general)  
+2. [Funcionalidades principales](#funcionalidades-principales)  
+3. [Guía de uso del CLI](#guía-de-uso-del-cli)  
+4. [Arquitectura del proyecto](#arquitectura-del-proyecto)  
+5. [Persistencia (SQLite)](#persistencia-sqlite)  
+6. [Logging](#logging)  
+7. [Instalación y ejecución](#instalación-y-ejecución)  
+8. [Tests y cobertura](#tests-y-cobertura)  
+9. [Documentación automática (pdoc)](#documentación-automática-pdoc)  
+10. [Changelog](#changelog)  
+11. [Contribuciones](#contribuciones)  
+12. [Atribuciones](#atribuciones)  
 
 ---
 
-## 🧩 Funcionalidades principales
+# 📝 Descripción general
+
+Este proyecto implementa un **gestor de tareas, presupuestos e inventario**, accesible desde una interfaz de línea de comandos (CLI).  
+El sistema está diseñado con principios de arquitectura modular, persistencia robusta, pruebas eficientes e integración continua.
+
+El proyecto alcanza la **versión final v1.0.0 (PRAC4)**.
+
+---
+# ⚙️ Funcionalidades principales
+
+### ✔ Gestión de tareas
+- Crear tareas
+- Listarlas
+- Marcarlas como completadas
+- Eliminarlas  
+- Persistencia en SQLite con ID autoincremental  
+- Logging detallado  
+
+### ✔ Gestión de presupuestos (ingresos y gastos)
+- Añadir presupuestos
+- Listarlos
+- Eliminarlos
+- Soporte para “ingreso” y “gasto”
+- Tabla propia en SQLite  
+- Uso en el plan de pruebas para aumentar cobertura  
+
+### ✔ Gestión de inventario (básico)
+*(Sección conceptual añadida para PRAC4 — no requiere más desarrollo)*  
+- Soporte conceptual para una tabla de inventario  
+- Diseño pensado para ampliación futura  
+- Integrable fácilmente en el menú CLI  
+
+---
 
 ### 🔹 Tareas
 - Agregar, listar, marcar como completada y eliminar tareas.
