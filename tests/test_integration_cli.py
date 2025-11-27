@@ -1,5 +1,5 @@
-from src.storage.database import get_conn, init_db
 from src.services import gestor_tareas
+from src.storage.database import get_conn, init_db
 
 
 def limpiar_tabla_tareas():

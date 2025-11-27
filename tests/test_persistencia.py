@@ -1,4 +1,3 @@
-from pathlib import Path
 
 from src.storage import persistencia
 
