@@ -14,10 +14,32 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             titulo TEXT NOT NULL,
             descripcion TEXT,
-            prioridad TEXT DEFAULT 'media',
+            prioridad TEXT,
             completada INTEGER DEFAULT 0
         );
-    """
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS presupuestos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            concepto TEXT NOT NULL,
+            monto REAL NOT NULL,
+            tipo TEXT NOT NULL
+        );
+        """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS inventario (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre TEXT NOT NULL,
+            cantidad INTEGER NOT NULL DEFAULT 0,
+            precio REAL NOT NULL DEFAULT 0.0
+        );
+        """
     )
     conn.commit()
     conn.close()

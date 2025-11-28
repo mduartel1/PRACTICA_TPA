@@ -1,5 +1,5 @@
 from src.storage.database import get_conn
-from src.utils.logging_config import logger  # ✅ Importamos el logger
+from src.utils.logging_config import logger  
 
 
 def crear_tabla():
