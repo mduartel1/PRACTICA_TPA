@@ -37,7 +37,9 @@ def actualizar_cantidad(item_id: int, cantidad: int) -> bool:
     """Actualiza la cantidad de un item. Devuelve True si se modificó."""
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute("UPDATE inventario SET cantidad = ? WHERE id = ?;", (cantidad, item_id))
+    cursor.execute(
+        "UPDATE inventario SET cantidad = ? WHERE id = ?;", (cantidad, item_id)
+    )
     conn.commit()
     success = cursor.rowcount > 0
     conn.close()

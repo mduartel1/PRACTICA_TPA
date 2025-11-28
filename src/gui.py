@@ -64,12 +64,13 @@ class MainWindow(QMainWindow):
 
         # Estilo general
         self._apply_style()
+
     # ------------------------------------------------------------------
     #                           ESTILO GLOBAL
     # ------------------------------------------------------------------
     def _apply_style(self) -> None:
         self.setStyleSheet(
-        """
+            """
         /* ----- VENTANA PRINCIPAL ----- */
         QMainWindow {
             background-color: #fafafa;
@@ -206,7 +207,8 @@ class MainWindow(QMainWindow):
             font-size: 13px;
         }
         """
-    )
+        )
+
     # ------------------------------------------------------------------
     #                           TAREAS
     # ------------------------------------------------------------------
@@ -235,7 +237,9 @@ class MainWindow(QMainWindow):
         self.tbl_tareas = QTableWidget()
         self.tbl_tareas.setAlternatingRowColors(True)
         self.tbl_tareas.setColumnCount(4)
-        self.tbl_tareas.setHorizontalHeaderLabels(["ID", "Título", "Prioridad", "Completada"])
+        self.tbl_tareas.setHorizontalHeaderLabels(
+            ["ID", "Título", "Prioridad", "Completada"]
+        )
 
         header = self.tbl_tareas.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Stretch)
@@ -253,7 +257,9 @@ class MainWindow(QMainWindow):
             self.tbl_tareas.setItem(row, 0, QTableWidgetItem(str(t.id)))
             self.tbl_tareas.setItem(row, 1, QTableWidgetItem(t.titulo))
             self.tbl_tareas.setItem(row, 2, QTableWidgetItem(t.prioridad))
-            self.tbl_tareas.setItem(row, 3, QTableWidgetItem("Sí" if t.completada else "No"))
+            self.tbl_tareas.setItem(
+                row, 3, QTableWidgetItem("Sí" if t.completada else "No")
+            )
 
     def _on_add_tarea(self) -> None:
         dlg = TareaDialog(self)
@@ -289,6 +295,7 @@ class MainWindow(QMainWindow):
         if not ok:
             QMessageBox.warning(self, "Tareas", "No se pudo eliminar la tarea.")
         self._load_tareas()
+
     # ------------------------------------------------------------------
     #                      PRESUPUESTOS
     # ------------------------------------------------------------------
@@ -400,7 +407,9 @@ class MainWindow(QMainWindow):
         self.tbl_inv = QTableWidget()
         self.tbl_inv.setAlternatingRowColors(True)
         self.tbl_inv.setColumnCount(5)
-        self.tbl_inv.setHorizontalHeaderLabels(["ID", "Nombre", "Cantidad", "Precio", "Total"])
+        self.tbl_inv.setHorizontalHeaderLabels(
+            ["ID", "Nombre", "Cantidad", "Precio", "Total"]
+        )
 
         header = self.tbl_inv.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Stretch)
@@ -460,6 +469,8 @@ class MainWindow(QMainWindow):
         if not ok:
             QMessageBox.warning(self, "Inventario", "No se pudo eliminar.")
         self._load_inventario()
+
+
 # ----------------------------------------------------------------------
 #                    DIÁLOGOS MODALES
 # ----------------------------------------------------------------------
@@ -469,7 +480,8 @@ class TareaDialog(QDialog):
         self.setWindowTitle("Nueva tarea")
         self.setModal(True)
         self.resize(400, 260)
-        self.setStyleSheet("""
+        self.setStyleSheet(
+            """
             QDialog {
                 background-color: #ffffff;
             }
@@ -490,7 +502,8 @@ class TareaDialog(QDialog):
                 padding: 8px 14px;
                 font-size: 14px;
             }
-        """)
+        """
+        )
 
         layout = QVBoxLayout(self)
 
@@ -540,7 +553,8 @@ class PresupuestoDialog(QDialog):
         self.setWindowTitle("Nuevo presupuesto")
         self.setModal(True)
         self.resize(400, 260)
-        self.setStyleSheet("""
+        self.setStyleSheet(
+            """
             QDialog {
                 background-color: #ffffff;
             }
@@ -561,7 +575,8 @@ class PresupuestoDialog(QDialog):
                 padding: 8px 14px;
                 font-size: 14px;
             }
-        """)
+        """
+        )
 
         layout = QVBoxLayout(self)
 
@@ -578,7 +593,7 @@ class PresupuestoDialog(QDialog):
         lbl_tipo = QLabel("Tipo")
         self.combo_tipo = QComboBox()
         self.combo_tipo.addItems(["ingreso", "gasto"])
-        
+
         layout.addWidget(lbl_concepto)
         layout.addWidget(self.edit_concepto)
         layout.addWidget(lbl_monto)
@@ -659,7 +674,7 @@ class InventarioDialog(QDialog):
         return {
             "nombre": self.edit_nombre.text().strip(),
             "cantidad": int(self.spin_cantidad.value()),
-            "precio": float(self.spin_precio.value())
+            "precio": float(self.spin_precio.value()),
         }
 
 
@@ -712,4 +727,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
