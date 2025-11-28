@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import sqlite3
-from typing import List, Tuple, Any
+from typing import List, Tuple
 
 from src.storage.database import get_conn
 

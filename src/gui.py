@@ -1,31 +1,30 @@
 from __future__ import annotations
 
 import sys
-from typing import List, Any
+from typing import Any, List
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QApplication,
-    QMainWindow,
-    QWidget,
-    QVBoxLayout,
+    QComboBox,
+    QDialog,
+    QDoubleSpinBox,
     QHBoxLayout,
+    QHeaderView,
     QLabel,
+    QLineEdit,
+    QMainWindow,
+    QMessageBox,
     QPushButton,
     QTableWidget,
     QTableWidgetItem,
-    QHeaderView,
-    QDialog,
-    QLineEdit,
-    QTextEdit,
-    QComboBox,
-    QDoubleSpinBox,
-    QMessageBox,
     QTabWidget,
+    QTextEdit,
+    QVBoxLayout,
+    QWidget,
 )
-from PySide6.QtCore import Qt
 
-from src.services import gestor_tareas, gestor_presupuestos
-from src.services import gestor_inventario
+from src.services import gestor_inventario, gestor_presupuestos, gestor_tareas
 
 
 class MainWindow(QMainWindow):
