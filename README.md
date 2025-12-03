@@ -1,4 +1,3 @@
-
 # PRACTICA_TPA – Gestor CLI de Tareas, Presupuestos e Inventario
 
 ![CI](https://github.com/mduartel1/PRACTICA_TPA/actions/workflows/ci.yml/badge.svg)
@@ -15,22 +14,23 @@ Incluye un **CLI completo**, persistencia en **SQLite**, logging avanzado, prueb
 2. Funcionalidades principales  
 3. Guía de uso del CLI  
 4. Instalación y ejecución  
-5. Estructura del proyecto  
-6. Arquitectura del proyecto  
-7. Diagramas oficiales PRAC2–PRAC3  
-8. Persistencia (SQLite)  
-9. Logging  
-10. Tests y cobertura  
-11. Documentación automática  
-12. Changelog  
-13. Contribuciones  
-14. Atribuciones  
+5. Ejecución de la GUI  
+6. Estructura del proyecto  
+7. Arquitectura del proyecto  
+8. Diagramas oficiales PRAC2–PRAC3  
+9. Persistencia (SQLite)  
+10. Logging  
+11. Tests y cobertura  
+12. Documentación automática  
+13. Changelog  
+14. Contribuciones  
+15. Atribuciones  
 
 ---
 
 # 📝 Descripción general
 
-Este proyecto implementa un **gestor CLI de tareas, presupuestos e inventario**, usando persistencia robusta con SQLite, pruebas automatizadas con Pytest, cobertura con Codecov, documentación con pdoc y CI/CD mediante GitHub Actions.  
+Este proyecto implementa un **gestor de tareas, presupuestos e inventario**, accesible tanto mediante un CLI como mediante una **interfaz gráfica (GUI) con PySide6**, usando persistencia robusta con SQLite, pruebas automatizadas con Pytest, cobertura con Codecov, documentación con pdoc y CI/CD mediante GitHub Actions.  
 
 Es la **versión final PRAC4 (v1.0.0)** del proyecto de Técnicas de Programación Avanzada.
 
@@ -52,10 +52,13 @@ Es la **versión final PRAC4 (v1.0.0)** del proyecto de Técnicas de Programaci�
 - Eliminación por identificador  
 - Tabla `presupuestos` en SQLite  
 
-## ✔ Gestión de inventario (conceptual para PRAC4)
-- Módulo conceptual integrado  
-- Diseño preparado para CRUD futuro  
-- Incluido en el menú del CLI  
+## ✔ Gestión de inventario (PRAC4)
+- Añadir productos al inventario  
+- Listado completo con cálculo de **Total = cantidad × precio**  
+- Actualización de cantidad  
+- Eliminación de items  
+- Tabla `inventario` en SQLite  
+- Acceso desde CLI y desde la GUI  
 
 ---
 
@@ -78,6 +81,22 @@ Menú principal:
 
 ---
 
+# 🖥 Ejecución de la GUI
+
+Para usar la interfaz gráfica en lugar del CLI:
+
+```bash
+python src/gui.py
+```
+
+La GUI ofrece:
+
+- Pestañas para **Tareas**, **Presupuestos** e **Inventario**  
+- Tablas con estilos modernos y filas alternas  
+- Diálogos modales para alta y edición de datos  
+- Estilo visual coherente (inspirado en macOS)  
+---
+
 # 🔧 Instalación y ejecución
 
 ```bash
@@ -91,8 +110,10 @@ pip install -r requirements.txt
 
 python -c "from src.storage.database import init_db; init_db()"
 
-python -m src.main
+python src/gui.py
 ```
+
+La ejecución por defecto en PRAC4 se realiza mediante la GUI (`src/gui.py`), que incluye módulos completos de Tareas, Presupuestos e Inventario.
 
 ---
 
@@ -121,6 +142,7 @@ PRACTICA_TPA/
 El proyecto sigue una arquitectura modular clara:
 
 - `cli/`: interacción del usuario  
+- `gui.py`: interfaz gráfica con PySide6  
 - `services/`: lógica de negocio  
 - `models/`: entidades del sistema  
 - `storage/`: persistencia SQLite y JSON  
@@ -259,7 +281,7 @@ Incluye las tablas:
 
 - `tareas`
 - `presupuestos`
-- `inventario` (conceptual)
+- `inventario`
 
 ---
 
@@ -319,6 +341,8 @@ pdoc -o docs src
 - Documentación actualizada  
 - CI/CD estable  
 - Informe PRAC4  
+- Implementación completa del módulo de inventario sobre SQLite  
+- Añadida GUI opcional con PySide6 para tareas, presupuestos e inventario  
 
 ## v0.3.0 – PRAC3
 - Migración a SQLite  

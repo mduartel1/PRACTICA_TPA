@@ -14,6 +14,8 @@ Este documento recoge los cambios realizados en el proyecto a lo largo de su des
 - Sección conceptual de Inventario incluida en el CLI y en la documentación.
 - Documentación pdoc revisada y actualizada para todos los módulos.
 - Informe PRAC4 generado en formatos PDF y DOCX.
+- Implementación completa del módulo de Inventario sobre SQLite, accesible desde CLI y GUI.
+- Nueva GUI profesional desarrollada con PySide6, incluyendo pestañas, tablas, diálogos modales y estilos modernos.
 
 ### Mejorado
 - Organización interna del repositorio.
@@ -21,11 +23,13 @@ Este documento recoge los cambios realizados en el proyecto a lo largo de su des
 - Logging profesional en todo el proyecto.
 - Estructura de los tests y limpieza automática de tablas.
 - CI/CD totalmente estable y validado.
+- Sustitución del CLI como interfaz principal por una GUI más accesible para el usuario.
 
 ### Corregido
 - Errores de formato detectados por Black y Ruff.
 - Inconsistencias de estilo en tests de integración y persistencia.
 - Problemas de importación y rutas en algunos módulos durante el CI.
+- Problemas de estilo y coherencia en la interfaz gráfica resueltos.
 
 ---
 
